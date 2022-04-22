@@ -32,7 +32,7 @@ app.get('/alltaxi',functions.alltaxis)
 app.post('/newtaxi',upload.single('file'),functions.registerTaxi)
 // app.post('/updatetaxi',functions.updatetaxi)
 app.post('/booktaxi',functions.booktaxi)
-app.post('/registeruser',upload.single('file'),functions.registerUser)
+app.post('/registeruser',functions.registerUser)
 app.post('/login',functions.login)
 // app.post('/taxiImage',upload.single('file'),functions.taxiImage)
 
