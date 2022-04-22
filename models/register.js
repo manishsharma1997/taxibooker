@@ -9,9 +9,9 @@ const registerer = new mongoose.Schema({
     role:{type:String,enum:["User","Driver"],required:true},
     otp:{type:Number}
 })
-const userImage = new mongoose.Schema({
-    path:{type:String,required:true},
-    userId:{type:mongoose.Schema.Types.ObjectId,ref:'users'}
-})
+// const userImage = new mongoose.Schema({
+//     path:{type:String,required:true},
+//     userId:{type:mongoose.Schema.Types.ObjectId,ref:'users'}
+// })
 module.exports.registerer=mongoose.model('users',registerer);
-module.exports.userImage=mongoose.model('userImage',userImage);
+// module.exports.userImage=mongoose.model('userImage',userImage);

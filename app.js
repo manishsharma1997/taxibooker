@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config({path:"./config.env"})
 const bodyParser = require('body-parser');
 require('./connection/connection');
+const cors = require('cors');
 const user = require('./models/taxiRegister').taxi;
 const image = require('./models/taxiRegister').pic;
 const registerer = require('./models/taxiBooking')
@@ -13,6 +14,7 @@ const functions = require('./controller/userController');
 const newPerson = require('./models/taxiBooking')
 const userImage = require('./models/register').userImage;
 const multer = require('multer');
+app.use(cors())
 app.use(bodyParser.json());
 
 const storage = multer.diskStorage({

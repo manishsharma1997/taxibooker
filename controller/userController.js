@@ -91,10 +91,10 @@ module.exports.registerUser= async(req, res)=>{
         firstName,lastName,email,number,password,isVerify,role,otp:otp
     })
     newRegisterPerson.save();
-    const userImages = new userImage({path:req.file.path, userId:newRegisterPerson._id})
-    userImages.save();
+    // const userImages = new userImage({path:req.file.path, userId:newRegisterPerson._id})
+    // userImages.save();
     // const jwtToken = jwt.sign({_id:newRegisterPerson._id},secretKey,{expiresIn:'1d'})
-    res.send(newRegisterPerson + "\n" + userImage);
+    res.send(newRegisterPerson);
 }
 
 module.exports.login = async(req, res)=>{
