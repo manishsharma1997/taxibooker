@@ -110,3 +110,46 @@ module.exports.login = async(req, res)=>{
         res.send('no email exists')
     }
 }
+
+module.exports.isverify=async(req,res)=>{
+    const finduser=await registerUser.findOne({email:req.body.email});
+    console.log(finduser);
+    if(finduser){
+    if (finduser.otp==req.body.otp){
+        const verification=await registerUser.updateOne({email:req.body.email},{$set:{isVerify:true}})
+        if(verification.modifiedCount){
+            res.send(finduser)
+        }
+        else{res.send('already verified user')}
+    }
+    else{
+        res.send('otp incorrect')
+    }}
+    else{res.send('no user found')}
+}
+
+module.exports.acceptbooking=async(req,res)=>{
+    const driveruser=await registerUser.findOne({email:req.body.email});
+    console.log(driveruser);
+    if(driveruser){
+    // const drivertaxi=await taxi.find({driverId:driveruser._id});
+    const bookingupdate=await taxiBooking.updateOne({_id:req.body._id},{$set:{
+        bookingstatus:"accepted"}})
+        console.log({b:bookingupdate});
+        res.send(bookingupdate)
+}
+else{res.send('driver not found')}}
+
+
+module.exports.cancelbooking=async(req,res)=>{
+    const userExist=await registerUser.findOne({email:req.body.email});
+    console.log(userExist);
+    if(userExist && userExist.role == "User"){
+        const deletebooking=await taxiBooking.updateOne({_id:req.body.bookingId},{$set:{bookingstatus:'cancelled',isdeleted:true}})
+        if(deletebooking.modifiedCount){
+            res.send('your booking cancelled succesfully')
+        }
+        else{res.send('you have no booking like this')}
+    }
+    else{res.send('please login')}
+}

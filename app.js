@@ -34,6 +34,9 @@ app.post('/newtaxi',upload.single('file'),functions.registerTaxi)
 app.post('/booktaxi',functions.booktaxi)
 app.post('/registeruser',functions.registerUser)
 app.post('/login',functions.login)
+app.post('/verify',functions.isverify);
+app.post('/acceptbooking',functions.acceptbooking);
+app.post('/cancelbooking',functions.cancelbooking);
 // app.post('/taxiImage',upload.single('file'),functions.taxiImage)
 
 

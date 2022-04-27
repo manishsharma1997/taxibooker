@@ -10,7 +10,8 @@ const newPerson = new mongoose.Schema({
     // destinationLattitude:{type:String, required:true},
     // destinationLongitude:{type:String, required:true},
     userId:{type:mongoose.Schema.Types.ObjectId,ref:"users"},
-    date:{type:String}
+    date:{type:String},
+    bookingstatus:{type:String,default:"pending",enum:["pending","accepted","cancelled"]}
 
 })
 
